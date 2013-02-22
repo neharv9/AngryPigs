@@ -32,13 +32,12 @@ public class PigServer implements PigContact {
  *  - broadcastLocation()
  * 	
  */
-	
 	public static void main(String args[]){
 		try {
 			PigServer pig = new PigServer();
 			PigContact stub = (PigContact) UnicastRemoteObject.exportObject(pig, 0);
 			// Bind the remote object's stub in the registry
-			Registry registry = LocateRegistry.getRegistry();
+			Registry registry = LocateRegistry.getRegistry(2001);
 			registry.bind("Pig", stub);
 
 			System.err.println("Server ready");
